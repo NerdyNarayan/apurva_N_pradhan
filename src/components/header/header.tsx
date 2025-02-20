@@ -11,12 +11,23 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "../ui/drawer";
+import { TextShimmer } from "../ui/shimmer-text";
+import { motion } from "framer-motion";
 export default function Header() {
   return (
-    <div className="sticky top-0 z-50 flex w-full flex-row justify-between border-b backdrop-blur-sm dark:border-gray-900 dark:bg-black/50">
+    <motion.div
+      initial={{ y: -20 }}
+      animate={{
+        y: 0,
+        transition: {
+          duration: 0.5,
+        },
+      }}
+      className="sticky top-0 z-50 flex w-full flex-row justify-between border-b backdrop-blur-sm dark:border-gray-900 dark:bg-black/40"
+    >
       <div className="flex flex-row gap-4 text-center">
         <Link href="/">
-          <h1 className="text-2xl font-bold text-primary transition-colors duration-300 hover:text-primary/80">
+          <h1 className="text-xl font-bold text-primary transition-colors duration-300 hover:text-primary/80 md:text-2xl">
             Apurva N Pradhan
           </h1>
         </Link>
@@ -47,7 +58,7 @@ export default function Header() {
           </Link>
         </nav>
       </div>
-      <div className="flex flex-row items-center gap-3">
+      <div className="flex flex-row items-center gap-3 text-sm">
         <Link
           href="https://github.com"
           target="_blank"
@@ -100,6 +111,6 @@ export default function Header() {
           </DrawerContent>
         </Drawer>
       </div>
-    </div>
+    </motion.div>
   );
 }

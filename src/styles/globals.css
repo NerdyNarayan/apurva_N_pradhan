@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes shine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@layer utilities {
+  .animate-shine {
+    animation: shine 3s linear infinite;
+    background-size: 100% auto;
+    mix-blend-mode: overlay;
+  }
+}
 @layer base {
   :root {
     --background: 0 0% 100%; /* White */

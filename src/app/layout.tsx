@@ -1,12 +1,12 @@
 // eslint-disable-next-line boundaries/no-unknown
 import "@/styles/globals.css";
-import { Inter } from "next/font/google";
+import { Inter, Poppins, Roboto, Montserrat, Changa } from "next/font/google";
 import { AppProvider } from "../lib/provider";
-const inter = Inter({ subsets: ["latin"] });
+const manrope = Montserrat({ subsets: ["latin"], weight: "400" });
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={manrope.className}>
         <AppProvider
           attribute="class"
           defaultTheme="system"

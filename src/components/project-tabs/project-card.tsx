@@ -1,7 +1,11 @@
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { FaGithub, FaLink } from "react-icons/fa";
+import { Card, CardContent } from "@/components/ui/card";
+import { FaGithub } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
+import { Badge } from "../ui/badge";
+import { LiaExternalLinkAltSolid } from "react-icons/lia";
+import { motion } from "framer-motion";
+import { BorderTrail } from "../ui/border-trail";
 
 interface ProjectCardProps {
   title: string;
@@ -19,51 +23,43 @@ export default function ProjectCard({
   tags,
 }: ProjectCardProps) {
   return (
-    <Card className="group overflow-hidden transition-shadow hover:shadow-lg">
-      <div className="relative aspect-video">
-        <Image
-          src={image || "/placeholder.svg"}
-          alt={title}
-          fill
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
-      </div>
-      <CardContent className="p-4">
-        <h3 className="mb-2 text-lg font-semibold text-foreground">{title}</h3>
-        <p className="mb-3 text-xs text-muted-foreground">{description}</p>
-        <div className="flex flex-wrap gap-1.5">
-          {tags.map((tag) => (
-            <span
-              key={tag}
-              className="inline-flex items-center rounded-md bg-muted px-2 py-0.5 text-xs font-medium text-foreground/80 ring-1 ring-inset ring-gray-500/10"
-            >
-              {tag}
-            </span>
-          ))}
+    <motion.div whileHover={{ scale: 1.03 }} transition={{ duration: 0.3 }}>
+      <Card className="group relative overflow-hidden rounded-sm border-none">
+        <div className="absolute right-0 top-0 z-10 hidden w-full flex-row justify-end gap-2 p-1 group-hover:flex">
+          <Badge
+            variant={"outline"}
+            className="flex border-none hover:text-white"
+          >
+            <Link href={link} target="_blank" rel="noopener noreferrer">
+              <LiaExternalLinkAltSolid className="h-7 w-7" />
+            </Link>
+          </Badge>
         </div>
-      </CardContent>
-      <CardFooter className="flex justify-between p-4 pt-0">
-        <Link
-          href={link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-xs text-primary hover:text-primary/80 hover:underline"
-        >
-          <FaGithub className="h-3.5 w-3.5" />
-          GitHub
-        </Link>
 
-        <Link
-          href={link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-xs text-primary hover:text-primary/80 hover:underline"
-        >
-          <FaLink className="h-3.5 w-3.5" />
-          Live
-        </Link>
-      </CardFooter>
-    </Card>
+        <div className="relative aspect-video overflow-hidden">
+          <Image
+            src={image || "/placeholder.svg"}
+            alt={title}
+            fill
+            className="object-cover grayscale transition-all duration-300 group-hover:grayscale-0"
+          />
+        </div>
+        <CardContent className="p-4">
+          <h3 className="mb-1 text-lg font-bold text-foreground">{title}</h3>
+          <p className="mb-3 text-sm text-muted-foreground">{description}</p>
+          <div className="flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <motion.span
+                key={tag}
+                whileHover={{ scale: 1.04 }}
+                className="inline-flex cursor-pointer items-center bg-muted px-3 py-1 text-xs font-medium text-foreground/80 ring-1 ring-inset ring-gray-500/10"
+              >
+                {tag}
+              </motion.span>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+    </motion.div>
   );
 }
