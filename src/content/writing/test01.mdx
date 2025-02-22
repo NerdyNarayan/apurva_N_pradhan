@@ -1,14 +1,15 @@
 ---
 title: '2021 in Review'
-publishedAt: '2021-12-31'
-summary: 'Summary of a great year.'
+date: '2021-12-31'
+description: 'Summary of a great year.'
 image: '/static/images/2021/banner.png'
+tags: ["code", "rehype pretty", "mdx"]
 ---
-## Intro
+# Intro
 
 2021 has truly been an astonishing year. I changed my perspective about life and people in general while achieving most of my wishes.
 This post wouldn't have been possible without the awesome people from Twitter: <a href="https://twitter.com/jsngr" target="_blank" rel="noopener noreferrer">@jsngr</a>,
-<a href="https://twitter.com/julianlehr" target="_blank" rel="noopener noreferrer">@julianlehr</a>, <a href="https://twitter.com/peduarte" target="_blank" rel="noopener noreferrer">@peduarte</a>,
+<a  href="https://twitter.com/julianlehr" target="_blank" rel="noopener noreferrer">@julianlehr</a>, <a href="https://twitter.com/peduarte" target="_blank" rel="noopener noreferrer">@peduarte</a>,
 <a href="https://twitter.com/brian_lovin" target="_blank" rel="noopener noreferrer">@brian_lovin</a>, <a href="https://twitter.com/pacocoursey" target="_blank" rel="noopener noreferrer">@pacocoursey</a>,
 <a href="https://twitter.com/emilkowalski_" target="_blank" rel="noopener noreferrer">@emilkowalski_</a>, <a href="https://twitter.com/raunofreiberg" target="_blank" rel="noopener noreferrer">@raunofreiberg</a>,
 <a href="https://twitter.com/leerob" target="_blank" rel="noopener noreferrer">@leerob</a>, <a href="https://twitter.com/ancashoria" target="_blank" rel="noopener noreferrer">@ancashoria</a> - from which I learned a fair ammount of programming and took a lot of
@@ -16,6 +17,34 @@ inspiration.
 
 ## Year summary
 
+
+ <CodeBlock
+        language="jsx"
+        filename="DummyComponent.jsx"
+        highlightLines={[9, 13, 14, 18]}
+        code={`const DummyComponent = () => {
+  const [count, setCount] = React.useState(0);
+ 
+  const handleClick = () => {
+    setCount(prev => prev + 1);
+  };
+ 
+  return (
+    <div className="p-4 border rounded-lg">
+      <h2 className="text-xl font-bold mb-4">Fights Counter</h2>
+      <p className="mb-2">Fight Club Fights Count: {count}</p>
+      <button 
+        onClick={handleClick}
+        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+      >
+        Increment
+      </button>
+    </div>
+  );
+};
+`}
+        />
+  
 Knowing nothing about web development, I have started learning the basic steps. I liked the fact that I could combine my design skills
 with programming. For about three months, I made mostly basic websites for various purposes. Until March I focused a lot on
 olympiads: competitive programming and mathematics - in which I qualified at the national stage and progressed a lot.

@@ -27,7 +27,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "contentlayer/generated": ["./.contentlayer/generated"],
+      "#site/content": ["./.velite"]
     }
   },
 
@@ -38,9 +38,7 @@
     "**/*.tsx",
     "**/*.cjs",
     "**/*.js",
-    ".contentlayer/generated",
-    ".contentlayer/generated/**/*.json",
-
+    "./.velite",
     ".next/types/**/*.ts"
   ],
   "exclude": ["node_modules"]

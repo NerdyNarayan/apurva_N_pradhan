@@ -1,9 +1,9 @@
 import React from "react";
 import Image from "next/image";
-import { useMDXComponent } from "next-contentlayer2/hooks";
 import { Button } from "./button";
 import { cn } from "@/lib/utils";
-
+import * as runtime from "react/jsx-runtime";
+import { CodeBlock } from "./code-block";
 type HTMLProps<T extends keyof JSX.IntrinsicElements> =
   React.ComponentProps<T> & {
     className?: string;
@@ -11,19 +11,20 @@ type HTMLProps<T extends keyof JSX.IntrinsicElements> =
 
 const components = {
   Button,
+  CodeBlock,
   h1: ({ className, ...props }: HTMLProps<"h1">) => (
     <h1
       className={cn(
-        "mt-2 scroll-m-20 text-4xl font-bold tracking-tight",
+        "mt-2 scroll-m-20 text-3xl font-bold tracking-tight",
         className,
       )}
       {...props}
-    />
+    ></h1>
   ),
   h2: ({ className, ...props }: HTMLProps<"h2">) => (
     <h2
       className={cn(
-        "mt-10 scroll-m-20 border-b pb-1 text-3xl font-semibold tracking-tight first:mt-0",
+        "mt-10 scroll-m-20 border-b-[1px] border-none pb-1 text-xl font-semibold tracking-tight text-primary/80 first:mt-0",
         className,
       )}
       {...props}
@@ -32,7 +33,7 @@ const components = {
   h3: ({ className, ...props }: HTMLProps<"h3">) => (
     <h3
       className={cn(
-        "mt-8 scroll-m-20 text-2xl font-semibold tracking-tight",
+        "text mt-8 scroll-m-20 text-lg font-semibold tracking-tight text-primary/80",
         className,
       )}
       {...props}
@@ -41,7 +42,7 @@ const components = {
   h4: ({ className, ...props }: HTMLProps<"h4">) => (
     <h4
       className={cn(
-        "mt-8 scroll-m-20 text-xl font-semibold tracking-tight",
+        "text mt-8 scroll-m-20 text-sm font-semibold tracking-tight text-primary/80",
         className,
       )}
       {...props}
@@ -50,7 +51,7 @@ const components = {
   h5: ({ className, ...props }: HTMLProps<"h5">) => (
     <h5
       className={cn(
-        "mt-8 scroll-m-20 text-lg font-semibold tracking-tight",
+        "text mt-8 scroll-m-20 text-xs font-semibold tracking-tight text-primary/80",
         className,
       )}
       {...props}
@@ -59,7 +60,7 @@ const components = {
   h6: ({ className, ...props }: HTMLProps<"h6">) => (
     <h6
       className={cn(
-        "mt-8 scroll-m-20 text-base font-semibold tracking-tight",
+        "text mt-8 scroll-m-20 text-base font-semibold tracking-tight text-primary/80",
         className,
       )}
       {...props}
@@ -73,7 +74,10 @@ const components = {
   ),
   p: ({ className, ...props }: HTMLProps<"p">) => (
     <p
-      className={cn("leading-7 [&:not(:first-child)]:mt-6", className)}
+      className={cn(
+        "leading-7 text-primary/90 [&:not(:first-child)]:mt-6",
+        className,
+      )}
       {...props}
     />
   ),
@@ -153,8 +157,14 @@ const components = {
 interface MdxProps {
   code: string;
 }
-
+const useMDXComponent = (code: string) => {
+  // eslint-disable-next-line @typescript-eslint/no-implied-eval
+  const fn = new Function(code);
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+  return fn({ ...runtime }).default;
+};
 export const Mdx: React.FC<MdxProps> = ({ code }) => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const Component = useMDXComponent(code);
 
   return (

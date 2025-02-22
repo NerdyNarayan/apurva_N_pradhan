@@ -1,49 +1,51 @@
-import { cn } from "@/lib/utils";
-import { allWritings } from "contentlayer/generated";
-import { pick } from "contentlayer2/client";
+import { writings } from "#site/content";
+import { Badge } from "@/components/ui/badge";
+import { TextShimmer } from "@/components/ui/shimmer-text";
+import { format } from "date-fns";
 import Link from "next/link";
-import React from "react";
 
-async function getData() {
-  const posts = allWritings
-    .map((post) => pick(post, ["slug", "title", "summary", "publishedAt"]))
-    .sort(
-      (a, b) =>
-        Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt)),
-    );
-
-  return {
-    props: {
-      posts,
-    },
-  };
-}
-
-const Writing = async () => {
-  const { posts } = (await getData()).props;
+export default async function WritingPage() {
   return (
-    <div>
-      {" "}
-      {posts.map((post) => (
-        <Link
-          className={cn(
-            "-mx-2 flex flex-row justify-between rounded-md px-2 py-2",
-            "hover:bg-gray-200 dark:hover:bg-gray-800",
-            "transition-all duration-200",
-          )}
-          href={`/writing/${post.slug}`}
-          key={post.slug}
-        >
-          <span className="mr-2 flex-grow truncate text-primary">
-            {post.title}
-          </span>
-          <span className="text-tertiary flex-shrink-0">
-            <span>{post.publishedAt}</span>
-          </span>
-        </Link>
-      ))}
+    <div className="mx-auto max-w-4xl">
+      <TextShimmer className="mb-8 w-full border-b-[1px] border-primary/[0.25] pb-2 text-3xl font-bold">
+        Writings
+      </TextShimmer>
+
+      <div className="flex flex-col space-y-2">
+        {writings.map((writing) => (
+          <article
+            key={writing.slug}
+            className="group rounded-sm p-2 hover:bg-secondary"
+          >
+            <div className="flex flex-row justify-between">
+              <Link href={`/writing/${writing.slugAsParams}`}>
+                <h2 className="text-lg">{writing.title}</h2>
+              </Link>
+              <div className="text-xs text-muted-foreground">
+                {format(new Date(writing.date), "dd MMMM yyyy")}
+              </div>
+            </div>
+            {writing.description && (
+              <p className="mb-2 text-xs text-muted-foreground">
+                {writing.description}
+              </p>
+            )}
+            {writing.tags && (
+              <div className="flex flex-wrap gap-2">
+                {writing.tags.map((tag) => (
+                  <Badge
+                    key={tag}
+                    variant={"outline"}
+                    className="cursor-pointer text-xs"
+                  >
+                    {tag}
+                  </Badge>
+                ))}
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
     </div>
   );
-};
-
-export default Writing;
+}

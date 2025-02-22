@@ -3,9 +3,11 @@
  * for Docker builds.
  */
 import "./src/config/env.js";
-import {withContentlayer} from "next-contentlayer2"
+
 /** @type {import("next").NextConfig} */
+
 const config = {
+  
   images: {
     remotePatterns: [
       {
@@ -18,4 +20,4 @@ const config = {
   },
 };
 
-export default withContentlayer(config);
+export default config;

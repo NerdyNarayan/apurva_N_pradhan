@@ -5,7 +5,6 @@ import { TextShimmer } from "@/components/ui/shimmer-text";
 import Experience from "@/components/experience/experience";
 import { TextLoop } from "@/components/ui/text-loop";
 import WritingList from "@/features/writings/components/writing-list";
-
 const HomePage = () => {
   return (
     <div className="h-full">
@@ -17,16 +16,16 @@ const HomePage = () => {
         <span>UI/UX enthusiast</span>
       </TextLoop>
       <div className="my-2" />
-      <ol className="relative left-[10px] w-full list-inside list-[circle] leading-8 text-primary/50 md:left-[30px] md:max-w-3xl">
-        <li>
+      <ol className="relative left-[10px] w-full list-inside list-[circle] leading-8 text-primary/50 md:left-[15px] md:max-w-3xl">
+        <li className="marker:text-primary">
           crafting digital experiences through clean interfaces and efficient
           solutions.
         </li>
-        <li>
+        <li className="marker:text-primary">
           My current focus revolves around building secure, performant web
           applications that balance modern aesthetics with technical excellence.
         </li>
-        <li>
+        <li className="marker:text-primary">
           Currently, I&apos;m working on a web app called{" "}
           <TextShimmer>Frugal Cove</TextShimmer>, an open-source budgeting
           platform.
