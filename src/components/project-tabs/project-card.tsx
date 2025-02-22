@@ -1,11 +1,9 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { FaGithub } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
 import { Badge } from "../ui/badge";
 import { LiaExternalLinkAltSolid } from "react-icons/lia";
 import { motion } from "framer-motion";
-import { BorderTrail } from "../ui/border-trail";
 
 interface ProjectCardProps {
   title: string;

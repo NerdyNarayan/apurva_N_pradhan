@@ -89,6 +89,7 @@ const config = {
           "src/server/**/*",
           "src/hooks/**/*",
           "src/lib/**/*",
+          "src/layout/**/*",
         ],
       },
       {
