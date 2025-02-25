@@ -24,7 +24,7 @@ const components = {
   h2: ({ className, ...props }: HTMLProps<"h2">) => (
     <h2
       className={cn(
-        "mt-10 scroll-m-20 border-b-[1px] border-none pb-1 text-xl font-semibold tracking-tight text-primary/80 first:mt-0",
+        "mt-10 scroll-m-20 border-b-[1px] border-none pb-1 text-xl font-bold tracking-tight first:mt-0",
         className,
       )}
       {...props}
@@ -33,7 +33,7 @@ const components = {
   h3: ({ className, ...props }: HTMLProps<"h3">) => (
     <h3
       className={cn(
-        "text mt-8 scroll-m-20 text-lg font-semibold tracking-tight text-primary/80",
+        "text mt-8 scroll-m-20 text-lg font-semibold tracking-tight",
         className,
       )}
       {...props}
@@ -42,7 +42,7 @@ const components = {
   h4: ({ className, ...props }: HTMLProps<"h4">) => (
     <h4
       className={cn(
-        "text mt-8 scroll-m-20 text-sm font-semibold tracking-tight text-primary/80",
+        "text mt-8 scroll-m-20 text-sm font-semibold tracking-tight",
         className,
       )}
       {...props}
@@ -75,7 +75,7 @@ const components = {
   p: ({ className, ...props }: HTMLProps<"p">) => (
     <p
       className={cn(
-        "leading-7 text-primary/90 [&:not(:first-child)]:mt-6",
+        "leading-7 text-primary/80 [&:not(:first-child)]:mt-6",
         className,
       )}
       {...props}

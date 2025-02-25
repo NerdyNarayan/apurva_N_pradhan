@@ -66,7 +66,7 @@ export default async function Page({ params }: WritingPageProps) {
       <span className="text-sm text-muted-foreground">
         {writing.description}
       </span>
-      <div className="mb-8 mt-4 flex flex-row gap-2">
+      <div className="mb-8 mt-4 flex flex-row gap-2 pb-2">
         {writing.tags?.map((tag) => (
           <Badge
             key={tag}

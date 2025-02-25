@@ -2,9 +2,12 @@ import { writings } from "#site/content";
 import Box from "@/components/ui/box";
 import { TextShimmer } from "@/components/ui/shimmer-text";
 import { cn } from "@/lib/utils";
+import { MdOutlineArrowOutward } from "react-icons/md";
 import { format } from "date-fns";
 import Link from "next/link";
 import React from "react";
+import { FaArrowCircleRight } from "react-icons/fa";
+import { FaArrowRightArrowLeft } from "react-icons/fa6";
 
 function getData() {
   const posts = writings.sort(
@@ -29,17 +32,20 @@ const WritingList = () => {
       <Box />
       {posts.map((post) => (
         <Link
-          className={cn(
-            "-mx-2 flex flex-row justify-between rounded-md px-2 py-2",
-            "border-b-[1px] hover:text-primary/80",
-            "transition-all duration-200",
-          )}
-          href={`/${post.slug}`}
+          href={post.slug}
           key={post.slug}
+          className="group my-3 flex flex-row items-center gap-2 text-primary/50"
         >
-          <span className="mr-2 flex-grow truncate">{post.title}</span>
-          <span className="flex-shrink-0">
-            <span>{format(new Date(post.date), "dd MMMM yyyy")}</span>
+          <span className="flex flex-row gap-1 text-primary/70 transition-all duration-300 group-hover:text-primary/80">
+            {post.title}
+          </span>
+          <span className="mr-1 text-xs transition-all duration-300 group-hover:text-primary/70">
+            {format(post.date, "MMMM dd, yyyy")}
+          </span>
+          <span className="">·</span>
+
+          <span className="text-xs transition-all duration-300 group-hover:text-primary/60">
+            {post.readingTime}
           </span>
         </Link>
       ))}

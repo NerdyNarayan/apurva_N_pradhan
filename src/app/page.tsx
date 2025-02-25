@@ -9,26 +9,31 @@ const HomePage = () => {
   return (
     <div className="h-full">
       <Box />
-      I&apos;m <TextShimmer>Apurva</TextShimmer>, a&nbsp;
-      <TextLoop className="font-semibold">
+      Hey, I&apos;m{" "}
+      <TextShimmer className="font-bold text-primary">Apurva</TextShimmer>,
+      a&nbsp;
+      <TextLoop className="font-bold">
         <span>full-stack developer</span>
         <span>mobile app engineer</span>
         <span>UI/UX enthusiast</span>
       </TextLoop>
       <div className="my-2" />
-      <ol className="relative left-[10px] w-full list-inside list-[circle] leading-8 text-primary/50 md:left-[15px] md:max-w-3xl">
+      <ol className="relative left-[10px] w-full list-inside list-[circle] leading-8 text-primary/70 md:left-[15px] md:max-w-2xl">
         <li className="marker:text-primary">
-          crafting digital experiences through clean interfaces and efficient
-          solutions.
+          I love building minimal, modern, and beautiful websites and mobile
+          apps.
         </li>
         <li className="marker:text-primary">
-          My current focus revolves around building secure, performant web
-          applications that balance modern aesthetics with technical excellence.
+          I am passionate about building things that solve my problems, some of
+          my solutions are &nbsp;
+          <TextShimmer className="text-primary/90">Slowmodoro</TextShimmer> and
+          &nbsp;
+          <TextShimmer className="text-primary/90">Frugal Cove</TextShimmer>
         </li>
         <li className="marker:text-primary">
           Currently, I&apos;m working on a web app called{" "}
-          <TextShimmer>Frugal Cove</TextShimmer>, an open-source budgeting
-          platform.
+          <TextShimmer className="text-primary/90">Frugal Cove</TextShimmer>, an
+          open-source budgeting platform.
         </li>
       </ol>
       <Box />

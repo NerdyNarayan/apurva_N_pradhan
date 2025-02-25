@@ -5,6 +5,15 @@ import { IconCheck, IconCopy } from "@tabler/icons-react";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
+import {
+  darcula,
+  dark,
+  nord,
+} from "react-syntax-highlighter/dist/esm/styles/hljs";
+import {
+  darkula,
+  dracula,
+} from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
 type CodeBlockProps = {
   language: string;
@@ -60,7 +69,7 @@ export const CodeBlock = ({
     <div
       className={cn(
         "relative w-full rounded-lg border p-4 font-mono text-sm",
-        isDark ? "bg-background" : "bg-primary/80",
+        isDark ? "bg-background" : "bg-primary/90",
       )}
     >
       <div className="flex flex-col gap-2">

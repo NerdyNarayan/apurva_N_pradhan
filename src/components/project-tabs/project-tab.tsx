@@ -14,7 +14,7 @@ export default function ProjectTab() {
   return (
     <>
       <TextShimmer className="w-full border-b-[1px] border-primary/[0.15] pb-2 text-start text-xl font-bold">
-        Projects
+        Creations
       </TextShimmer>
       <Box />
 

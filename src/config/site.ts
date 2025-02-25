@@ -22,20 +22,20 @@ const home = {
   href: "/",
 };
 const project = {
-  title: "Projects",
-  href: "/projects",
+  title: "Creations",
+  href: "/creation",
 };
 const skills = {
   title: "Skills",
   href: "/skill",
 };
 const writing = {
-  title: "Writing",
+  title: "Writings",
   href: "/writing",
 };
-const about = {
-  title: "About",
-  href: "/about",
+const self = {
+  title: "Self",
+  href: "/self",
 };
 
 export const socialItems = {
@@ -58,7 +58,7 @@ export const socialItems = {
   ],
 };
 export const navItems = {
-  items: [project, skills, home, writing, about],
+  items: [home, self, project, writing],
 };
 export type NavItems = typeof navItems;
 export type SiteConfig = typeof siteConfig;

@@ -2,9 +2,17 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import {defineCollection,defineConfig,s} from "velite"
-const computedFields = <T extends { slug: string }>(data: T) => ({
+export const calculateReadingTime = (text:string) => {
+  const wordsPerMinute = 200;
+  const noOfWords = text.split(/\s/g).length;
+  const minutes = noOfWords / wordsPerMinute;
+  const readTime = Math.ceil(minutes);
+  return `${readTime} min read`;
+};
+const computedFields = <T extends {body:string,  slug: string }>(data: T) => ({
   ...data,
   slugAsParams: data.slug.split("/").slice(1).join("/"),
+  readingTime:calculateReadingTime(data.body),
 });
 const writings=defineCollection({
 
@@ -17,7 +25,10 @@ const writings=defineCollection({
     date: s.isodate(),
     published: s.boolean().default(true),
     tags: s.array(s.string()).optional(),
-    body: s.mdx(),  }).transform(computedFields)
+    body:s.mdx()
+,
+    toc:s.toc()
+  }).transform(computedFields),
 })
 
 export default defineConfig({
@@ -40,9 +51,11 @@ mdx:{
     rehypeAutolinkHeadings,{
       behavior: "wrap",
       properties: {
-        className: ["subheading-anchor"],
+        className: ["subheading-anchor autolink-heading"],
         ariaLabel: "Link to section",
+        
       },
+      
     }
   ]
   ],

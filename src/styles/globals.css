@@ -84,3 +84,6 @@
     @apply bg-background text-foreground;
   }
 }
+.autolink-heading {
+  text-decoration:none;
+}
