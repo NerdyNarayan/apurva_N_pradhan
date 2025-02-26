@@ -1,8 +1,8 @@
 import React from "react";
 const Footer = () => {
   return (
-    <div className="mt-12 flex w-full justify-end text-muted-foreground">
-      @2025 Apurva
+    <div className="mt-12 w-full text-center text-sm text-muted-foreground">
+      Apurva Narayan Pradhan @ 2025
     </div>
   );
 };

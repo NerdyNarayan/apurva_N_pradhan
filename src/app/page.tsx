@@ -7,7 +7,7 @@ import { TextLoop } from "@/components/ui/text-loop";
 import WritingList from "@/features/writings/components/writing-list";
 const HomePage = () => {
   return (
-    <div className="h-full">
+    <div className="mx-auto h-full max-w-4xl">
       <Box />
       Hey, I&apos;m{" "}
       <TextShimmer className="font-bold text-primary">Apurva</TextShimmer>,

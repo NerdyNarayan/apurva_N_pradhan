@@ -54,7 +54,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           enableSystem
           disableTransitionOnChange
         >
-          <main className="mx-auto min-h-screen w-full max-w-[80ch] space-y-6 px-4 md:px-0">
+          <main className="min-h-screen space-y-6 px-4 md:px-0">
             <Header />
             {children}
             <Footer />

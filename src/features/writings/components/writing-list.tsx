@@ -34,19 +34,21 @@ const WritingList = () => {
         <Link
           href={post.slug}
           key={post.slug}
-          className="group my-3 flex flex-row items-center gap-2 text-primary/50"
+          className="group my-3 flex flex-col gap-2 text-primary/50 md:flex-row"
         >
-          <span className="flex flex-row gap-1 text-primary/70 transition-all duration-300 group-hover:text-primary/80">
+          <span className="text-primary/70 transition-all duration-300 group-hover:text-primary/80">
             {post.title}
           </span>
-          <span className="mr-1 text-xs transition-all duration-300 group-hover:text-primary/70">
-            {format(post.date, "MMMM dd, yyyy")}
-          </span>
-          <span className="">·</span>
+          <div className="flex flex-row items-center gap-1">
+            <span className="mr-1 text-xs transition-all duration-300 group-hover:text-primary/70">
+              {format(post.date, "MMMM dd, yyyy")}
+            </span>
+            <span className="">·</span>
 
-          <span className="text-xs transition-all duration-300 group-hover:text-primary/60">
-            {post.readingTime}
-          </span>
+            <span className="text-xs transition-all duration-300 group-hover:text-primary/60">
+              {post.readingTime}
+            </span>
+          </div>
         </Link>
       ))}
       <Box />

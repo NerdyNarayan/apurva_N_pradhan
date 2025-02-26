@@ -21,7 +21,7 @@ export default function Header() {
       initial="hidden"
       animate="show"
       variants={staggerContainer}
-      className="sticky top-0 z-50 flex w-full flex-row items-center justify-between border-b pt-2 backdrop-blur-sm dark:border-gray-900 dark:bg-black/40"
+      className="sticky top-0 z-50 mx-auto mt-4 flex w-full flex-row items-center justify-between border-b px-5 pt-2 backdrop-blur-sm dark:border-gray-900 dark:bg-black/40"
     >
       <div className="flex flex-row gap-4">
         <Link href="/">
@@ -29,15 +29,13 @@ export default function Header() {
             Apurva N Pradhan
           </h1>
         </Link>
-        <NavigationMenu className="mt-1 hidden list-none flex-row items-center gap-3 text-sm text-muted-foreground md:flex">
-          {navItems.items
-            .filter((p) => p.title !== "Home")
-            .map(({ title, href }) => (
-              <SiteNavItem href={href} key={title} title={title} />
-            ))}
-        </NavigationMenu>
       </div>
-      <NavigationMenu className="hidden list-none flex-row items-center gap-3 text-xs md:flex">
+      <NavigationMenu className="text-md hidden list-none flex-row items-center gap-3 md:flex">
+        {navItems.items
+          .filter((p) => p.title !== "Home")
+          .map(({ title, href }) => (
+            <SiteNavItem href={href} key={title} title={title} />
+          ))}
         {socialItems.items.map(({ title, href, icon }) => (
           <SiteNavItem href={href} key={title} icon={icon} title={title} />
         ))}

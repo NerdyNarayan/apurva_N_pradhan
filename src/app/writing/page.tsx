@@ -10,7 +10,7 @@ import Link from "next/link";
 
 export default async function WritingPage() {
   return (
-    <div className="mx-auto">
+    <div className="mx-auto max-w-4xl">
       <NavigationMenu className="my-20 flex list-none flex-row items-center justify-center gap-4 font-serif text-3xl">
         <NavigationMenuItem className="mb-8 w-full text-primary">
           <Link href="/writing">
@@ -22,50 +22,43 @@ export default async function WritingPage() {
           Notes
         </NavigationMenuItem>
       </NavigationMenu>
-      <div className="flex flex-col space-y-2">
+      <div className="space-y-6">
         {writings
           .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
           .map((writing) => (
-            <article
+            <Link
               key={writing.slug}
-              className="group rounded-lg border-primary/10 p-2 transition-all duration-100 hover:border-[1px]"
+              href={`/writing/${writing.slugAsParams}`}
+              className="block"
             >
-              <Link href={`/writing/${writing.slugAsParams}`}>
-                <div className="flex flex-row justify-between">
-                  <span className="font flex flex-row gap-1 font-semibold text-primary group-hover:text-primary/80">
-                    {writing.title}
-                  </span>
-                  <div className="flex flex-col text-xs text-muted-foreground">
-                    <span className="mr-1 text-xs transition-all duration-300 group-hover:text-primary/70">
-                      {format(writing.date, "MMMM dd, yyyy")}
-                    </span>
-
-                    <span className="text-xs transition-all duration-300 group-hover:text-primary/60">
-                      {writing.readingTime}
-                    </span>
-                  </div>
-                </div>
-                {writing.description && (
-                  <p className="mb-2 text-xs text-muted-foreground">
-                    {writing.description}
-                  </p>
-                )}
-                {/* {writing.tags && (
-                <div className="  flex flex-wrap gap-2">
+              <h2 className="text-lg">{writing.title}</h2>
+              <div className="mb-3 flex items-center space-x-4 text-sm text-muted-foreground">
+                <time className="transition-colors duration-300 group-hover:text-primary/70">
+                  {format(writing.date, "MMMM dd, yyyy")}
+                </time>
+                <span className="transition-colors duration-300 group-hover:text-primary/60">
+                  {writing.readingTime}
+                </span>
+              </div>
+              {writing.description && (
+                <p className="mb-4 line-clamp-2 text-sm text-muted-foreground">
+                  {writing.description}
+                </p>
+              )}
+              {writing.tags && (
+                <div className="flex flex-wrap gap-2">
                   {writing.tags.map((tag) => (
                     <Badge
+                      variant="secondary"
                       key={tag}
-                      variant={"outline"}
-                      className="cursor-pointer  border-0 bg-primary/10 hover:bg-primary/20"
+                      className="px-2 py-0.5 text-xs font-medium"
                     >
                       {tag}
                     </Badge>
                   ))}
                 </div>
-
-              )} */}
-              </Link>
-            </article>
+              )}
+            </Link>
           ))}
       </div>
     </div>

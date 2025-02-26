@@ -5,6 +5,7 @@ import { siteConfig } from "@/config/site";
 import { type Metadata } from "next";
 import { format } from "date-fns";
 import { Badge } from "@/components/ui/badge";
+import { TableOfContents } from "@/components/toc";
 interface WritingPageProps {
   params: Promise<{
     slug: string[];
@@ -53,31 +54,38 @@ export default async function Page({ params }: WritingPageProps) {
   }
   const formattedDate = format(new Date(writing.date), "dd MMMM yyyy");
   return (
-    <>
-      <div className="flex flex-row items-center justify-between text-center">
-        <TextShimmer className="w-full pb-2 text-start text-2xl font-bold">
-          {writing.title}
-        </TextShimmer>
+    <main className="relative flex flex-row py-6 lg:gap-10 lg:py-10">
+      {/* <div className="md:sticky top-[40px] h-screen hidden xl:block overflow-y-auto w-80 ">
+        <TableOfContents toc={writing.toc} />
 
-        <span className="flex-shrink-0 text-sm text-primary/80">
-          {formattedDate}
+
+      </div> */}
+      <div className="mx-auto max-w-3xl">
+        <div className="flex flex-row items-center justify-between text-center">
+          <TextShimmer className="w-full pb-2 text-start text-2xl font-bold">
+            {writing.title}
+          </TextShimmer>
+
+          <span className="flex-shrink-0 text-sm text-primary/80">
+            {formattedDate}
+          </span>
+        </div>
+        <span className="text-sm text-muted-foreground">
+          {writing.description}
         </span>
+        <div className="mb-8 mt-4 flex flex-row gap-2 pb-2">
+          {writing.tags?.map((tag) => (
+            <Badge
+              key={tag}
+              variant={"outline"}
+              className="cursor-pointer text-xs"
+            >
+              {tag}
+            </Badge>
+          ))}
+        </div>
+        <Mdx code={writing.body} />
       </div>
-      <span className="text-sm text-muted-foreground">
-        {writing.description}
-      </span>
-      <div className="mb-8 mt-4 flex flex-row gap-2 pb-2">
-        {writing.tags?.map((tag) => (
-          <Badge
-            key={tag}
-            variant={"outline"}
-            className="cursor-pointer text-xs"
-          >
-            {tag}
-          </Badge>
-        ))}
-      </div>
-      <Mdx code={writing.body} />
-    </>
+    </main>
   );
 }
